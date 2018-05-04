@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Time Calc</title>
 </head>
 <body>
+<div ng-app>
 
+    <label class="timeCalc">Time Clocked In for Break</label>
+    <input class="timeCalc1" type="number" ng-model="Hour" placeholder="09">
+    <input class="timeCalc2" type="number" ng-model="Minute" placeholder="45">
+    <hr>
+    <form>
+        <input class="breakLength" type="radio" name="breakLength" ng-model="breakLength" value="45" checked> 45 Minutes<br>
+        <input class="breakLength" type="radio" name="breakLength" ng-model="breakLength" value="30"> 30 Minutes<br>
+        <input class="breakLength" type="radio" name="breakLength" ng-model="breakLength" value="15"> 15 Minutes
+    </form>
+    <div ng-if="Minute -- breakLength >= 60">
+            <p class="timeCalc">Clock back in at: {{ Hour + 1}}:{{Minute - 60 -- breakLength}}</p>
+        </div>
+    <div ng-if="Minute -- breakLength < 1">
+        <p class="timeCalc">Clock back in at: {{Hour}}:{{Minute -- breakLength}}0</p>
+    </div>
+    <div ng-if="Minute -- breakLength < 60 && Minute -- breakLength >= 1">
+            <p class="timeCalc">Clock back in at: {{Hour}}:{{Minute -- breakLength}}</p>
+        </div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </body>
 </html>
